@@ -38,11 +38,9 @@ class Map:
                 self.list_cell_resources.append(cell.id)
                 self.capacity[self.well.id][cell.id] = cell.resources
                 self.capacity[cell.id][self.well.id] = cell.resources
-            
-          
+                
 
-
-            self.wide_route_capacity_calculation()
+        self.wide_route_capacity_calculation()
 
             
         
@@ -70,8 +68,17 @@ class Map:
 
 
 
-    def capacity_calculation(self):
-        for cell in self.list_cell:
+    def capacity_update(self):
+        for index, cell_resources in enumerate(self.list_cell_resources):
+            if not cell_resources.resource:
+                del self.list_cell_resources[index]
+                continue
+
+            self.capacity[self.well.id][cell_resources.id] = cell_resources.resources
+            self.capacity[cell_resources.id][self.well.id] = cell_resources.resources
+
+
+            
 
 
 
