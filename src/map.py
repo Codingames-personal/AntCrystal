@@ -20,7 +20,7 @@ class Map:
         self.my_bases = my_bases
         self.op_bases = op_bases
 
-        self.resources = [cell for cell in self.cells if cell.cell_type in [1, 2]]
+        self.resources = [cell.index for cell in self.cells if cell.cell_type in [1, 2]]
 
         self.levels = [10**5]*number_of_cells
         for id_my_base in my_bases:
@@ -40,6 +40,7 @@ class Map:
                 self.levels[i] = min(l1, l2)
         
 
+    def paths_update(self):
         self.paths = []
         for id_resource in self.resources:
             path = [id_resource]
@@ -53,4 +54,5 @@ class Map:
                         path.pop()
             recurrence(id_resource, self.levels[id_resource])
         
+    
         
