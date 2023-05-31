@@ -2,15 +2,18 @@
 #%%
 class Cell:
     id : int
-    type_ : int
+    cell_type: int
     resources : int
-    neighbors : list
+    neighbors : list[int]
     my_ants = 0
     op_ants = 0
     
-    def __init__(self, id : int, type_ : int, resources : int, neighbors : int) -> None:
+    def exist(id : int):
+        return id >= 0
+
+    def __init__(self, id : int, cell_type : int, resources : int, neighbors : int) -> None:
         self.id = id
-        self.type_ = type_
+        self.cell_type = cell_type
         self.resources = resources
         self.neighbors = neighbors
 
